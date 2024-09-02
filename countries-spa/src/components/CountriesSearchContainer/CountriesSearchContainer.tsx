@@ -5,6 +5,8 @@ import { useGetCountries } from "../../hooks/countries";
 import { SearchTypeDropdown } from "../Search/SearchTypeDropdown";
 import { SearchBar } from "../Search/SearchBar";
 import { SearchType } from "../../enums/SearchTypes";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const CountriesSearchContainer: React.FC = () => {
     const [searchQuery, setSearch] = useState("");
@@ -15,6 +17,11 @@ export const CountriesSearchContainer: React.FC = () => {
     
     const handleClick = async () => {
         const result = await getCountries({ searchQuery, searchType });
+         
+        if (result && result.length === 0) {
+            toast.info('No results found.');
+        }
+
         setRowData(result);
     };
 
@@ -33,3 +40,14 @@ export const CountriesSearchContainer: React.FC = () => {
         </div>
     );
 };
+
+toast.info('No results found.', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+  
