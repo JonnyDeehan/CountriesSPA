@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/JonnyDeehan/CountriesSPA/static/css/main.f4c73542.css",
+    "main.js": "/JonnyDeehan/CountriesSPA/static/js/main.926843a3.js",
+    "index.html": "/JonnyDeehan/CountriesSPA/index.html",
+    "main.f4c73542.css.map": "/JonnyDeehan/CountriesSPA/static/css/main.f4c73542.css.map",
+    "main.926843a3.js.map": "/JonnyDeehan/CountriesSPA/static/js/main.926843a3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f4c73542.css",
+    "static/js/main.926843a3.js"
+  ]
+}
