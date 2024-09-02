@@ -7,10 +7,10 @@ export const StyledCountriesGrid = styled.div`
     height: 100%;
 }
 
-#myGrid {
+  #myGrid {
     flex: 1 1 0px;
     width: 100%;
-}
+  }
 
 .example-header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;

@@ -1,15 +1,24 @@
 import React from 'react';
 import './App.css';
 import { CountriesSearchContainer } from '../components/CountriesSearchContainer/CountriesSearchContainer';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ToastContainer } from 'react-toastify';
+import { Sidebar } from '../components/Sidebar/Sidebar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { FavouritesGrid } from '../components/FavouritesGrid/FavouritesGrid';
 
-const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <CountriesSearchContainer />
+    <Router>
+      <div className="app-container">
+          <Sidebar />
+          <div className="content-container">
+            <Routes>
+              <Route path="/" element={<CountriesSearchContainer />} />
+              <Route path="/favourites" element={<FavouritesGrid />} />
+            </Routes>
+          </div>
+        </div>
       <ToastContainer 
         position="top-right" // Ensure proper position is set here as well
         autoClose={3000}
@@ -21,7 +30,7 @@ function App() {
         draggable
         pauseOnHover
       />
-    </QueryClientProvider>
+    </Router>
   );
 }
 
