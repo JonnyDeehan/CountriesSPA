@@ -1,27 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CountriesGrid } from '../CountriesGrid/CountriesGrid';
 import { StyledFavourites } from './Favourites.styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { toggleFavourite } from '../../store/favouritesSlice';
 
 export const FavouritesGrid: React.FC = () => {
-  const [favourites, setFavourites] = useState<any[]>([]);
-
-  useEffect(() => {
-    const savedFavourites = localStorage.getItem('favourites');
-    if (savedFavourites) {
-      setFavourites(JSON.parse(savedFavourites));
-    }
-  }, []);
+  const dispatch = useDispatch();
+  const favourites = useSelector((state: RootState) => state.favourites.favourites);
 
   const handleFavouriteToggle = (country: any) => {
-    const isFavourite = favourites.some(fav => fav.name.common === country.name.common);
-let updatedFavourites;
-    if (isFavourite) {
-      updatedFavourites = favourites.filter(fav => fav.name.common !== country.name.common);
-    } else {
-      updatedFavourites = [...favourites, country];
-    }
-    setFavourites(updatedFavourites);
-    localStorage.setItem('favourites', JSON.stringify(updatedFavourites));
+    dispatch(toggleFavourite(country));
   };
 
   return (
