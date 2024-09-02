@@ -7,6 +7,7 @@ import { SearchBar } from "../Search/SearchBar";
 import { SearchType } from "../../enums/SearchTypes";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { StyledCountriesSearchContainer } from "./CountriesSearchContainer.styles";
 
 export const CountriesSearchContainer: React.FC = () => {
     const [searchQuery, setSearch] = useState("");
@@ -26,7 +27,7 @@ export const CountriesSearchContainer: React.FC = () => {
     };
 
     return (
-        <div>
+        <StyledCountriesSearchContainer>
             <h1>Countries SPA</h1>
             <SearchTypeDropdown setSearchType={setSearchType} />
             <SearchBar setSearch={setSearch} />
@@ -37,7 +38,7 @@ export const CountriesSearchContainer: React.FC = () => {
                 Search
             </button>
             {rowData && <CountriesGrid rowData={rowData} />}
-        </div>
+        </StyledCountriesSearchContainer>
     );
 };
 
