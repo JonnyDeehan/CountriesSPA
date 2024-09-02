@@ -1,17 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { restCountriesApi } from "./api";
+import { AxiosResponse } from "axios";
 
 class RestCountriesService {
-    public getCountriesByName(name: string): Promise<any> {
-        return restCountriesApi.post<any>(`/name/${name}`);
+    private handleResponse(response: AxiosResponse<any[]>): any[] {
+        return response.data;
     }
 
-    public getCountriesByLanguage(language: string): Promise<any> {
-        return restCountriesApi.get<any>(`/lang/${language}`);
+    public async getCountriesByName(name: string): Promise<any[]> {
+        const response = await restCountriesApi.get<any[]>(`/name/${name}`);
+        return this.handleResponse(response);
     }
 
-    public getCountriesByCurrency(currency: string): Promise<any> {
-        return restCountriesApi.get<any>(`/currency/${currency}`);
+    public async getCountriesByLanguage(language: string): Promise<any[]> {
+        const response = await restCountriesApi.get<any[]>(`/lang/${language}`);
+        return this.handleResponse(response);
+    }
+
+    public async getCountriesByCurrency(currency: string): Promise<any[]> {
+        const response = await restCountriesApi.get<any[]>(`/currency/${currency}`);
+        return this.handleResponse(response);
     }
 }
 
